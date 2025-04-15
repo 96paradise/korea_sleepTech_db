@@ -95,6 +95,7 @@ select @msg;
 
 -- 2) 수정 테스트
 update `trigger_table` set txt='르세라핌' where id=3;
+SET SQL_SAFE_UPDATES = 0;
 
 select @msg;
 
