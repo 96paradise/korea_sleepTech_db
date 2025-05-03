@@ -1,0 +1,16 @@
+#### post_db ####
+
+CREATE DATABASE IF NOT EXISTS board_db 
+DEFAULT CHARACTER SET utf8mb4 COLLATE UTF8mb4_general_ci;
+
+USE board_db;
+
+CREATE TABLE IF NOT EXISTS post (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    content TEXT NOT NULL,
+    author VARCHAR(50) NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+SELECT * FROM post;

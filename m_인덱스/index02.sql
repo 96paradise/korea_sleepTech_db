@@ -14,7 +14,7 @@
     1) unique: 중복을 허용하지 않는 고유 인덱스 생성 (생략 시 중복 허용)
     2) asc | desc: 오름차순 | 내림차순 (생략 시 오름차순)
 */
-use 인덱스;
+use `인덱스`;
 
 # 단순 인덱스 생성
 create index idx_member_addr
