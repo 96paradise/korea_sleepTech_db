@@ -29,3 +29,35 @@ CREATE TABLE IF NOT EXISTS book (
 );
 
 SELECT * FROM book;
+
+-- products 테이블 --
+CREATE TABLE products (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(10,2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+SELECT * FROM products;
+
+-- post(게시물) 테이블 --
+CREATE TABLE IF NOT EXISTS post (
+	id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL
+);
+
+-- comment(댓글) 테이블 --
+CREATE TABLE IF NOT EXISTS comment (
+	id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    post_id BIGINT,
+    content VARCHAR(255) NOT NULL,
+    commenter VARCHAR(255) NOT NULL,
+    FOREIGN KEY(post_id) REFERENCES post(id) ON DELETE CASCADE
+);
+
+SELECT * FROM post;
+SELECT * FROM comment;
