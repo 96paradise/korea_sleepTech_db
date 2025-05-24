@@ -34,7 +34,7 @@ select * from logs;
 start transaction;
 
 -- 1단계: 사용자 등록
-insert into users (username, password) values ('lsa', '1234');
+insert into users (username, password) values ('cnw', '1234');
 savepoint step1; # 저장 위치명 지정
 
 -- 2단계: 설정 추가 

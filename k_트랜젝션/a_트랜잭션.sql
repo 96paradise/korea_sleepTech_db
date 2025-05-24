@@ -70,7 +70,7 @@ start transaction;
 # 이후 SQL문은 하나의 명령문으로 처리
 insert into members 
 values
-	(5, '이승아', 30);
+	(5, '손흥민', 30);
     
 insert into purchases
 values
@@ -100,8 +100,8 @@ create table transaction_log (
 
 insert into accounts (account_holder, balance)
 values
-	('이승아', 5000),
-	('이도경', 3000);
+	('손흥민', 5000),
+	('박지성', 3000);
 
 ### 스토어드 프로시저 작성: SQL 내의 조건문이나 반복문은 SQL 스크립트 내에서 바로 실행X, 프로시저나 트리거 내에서 사용 ###
 delimiter $$
@@ -117,23 +117,23 @@ begin
 
 	select balance into from_balance # select 결과를 변수에 저장할 때 사용
 	from accounts
-	where account_holder = '이승아';
+	where account_holder = '손흥민';
 
 	-- 잔액이 1000원 이상일 경우에만 송금 실행
 	if from_balance >= 1000 then
 		
 		update accounts
 		set balance = balance - 1000
-		where account_holder = '이승아';
+		where account_holder = '손흥민';
 
 		update accounts
 		set balance = balance + 1000
-		where account_holder = '이도경';
+		where account_holder = '박지성';
 
 		insert into transaction_log (from_account_id, to_account_id, amount)
 		values (
-			(select account_id from accounts where account_holder = '이승아'),
-			(select account_id from accounts where account_holder = '이도경'),
+			(select account_id from accounts where account_holder = '손훙만'),
+			(select account_id from accounts where account_holder = '박지성'),
 			1000
 		);
 
